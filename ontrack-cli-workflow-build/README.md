@@ -10,7 +10,7 @@ Example:
 
 ```yaml
 steps:
-  - uses: nemerosa/ontrack-github-actions-cli-libraryontrack-cli-workflow-build@version
+  - uses: nemerosa/ontrack-github-actions-cli-library/ontrack-cli-workflow-build@version
     with:
       project: reporting
 ```
