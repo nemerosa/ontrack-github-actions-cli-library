@@ -1,0 +1,14 @@
+{
+  "name": "ontrack-github-actions-cli-library",
+  "private": true,
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nemerosa/ontrack-github-actions-cli-library.git"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "semantic-release": "^19.0.2"
+  }
+}
