@@ -1,0 +1,35 @@
+name: "Yontrack CLI Workflow Build"
+description: "Links the current workflow to an existing build in Yontrack"
+inputs:
+  project:
+    description: "Name of the project in Yontrack where the build must be found"
+    required: true
+  version:
+    description: "Version of the Ontrack CLI to setup (defaults to the latest)"
+    required: false
+    default: ''
+runs:
+  using: composite
+  steps:
+    - name: Yontrack CLI installation
+      id: yontrack-cli-install
+      uses: nemerosa/ontrack-github-actions-cli-install@v1.1.0
+      env:
+        YONTRACK_URL: ${{ vars.YONTRACK_URL }}
+        YONTRACK_TOKEN: ${{ secrets.YONTRACK_TOKEN }}
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        version: ${{ inputs.version }}
+
+    - name: Yontrack build setup
+      id: yontrack-build-setup
+      shell: bash
+      run: |
+        yontrack build search \
+          --project {{ inputs.project }} \
+          --commit ${{ github.sha }} \
+          --count 1 \
+          --output env > .yontrack.env
+        
+        grep -v '^#' .yontrack.env | grep -v '^$' | sed 's/^export //' >> $GITHUB_ENV
+        rm -f .yontrack.env
