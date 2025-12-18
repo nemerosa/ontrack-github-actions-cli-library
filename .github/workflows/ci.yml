@@ -46,6 +46,6 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Tagging the Yontrack build
-        if: ${{ github.ref == 'refs/heads/main' && steps.npm-publish.outputs.version != '' }}
+        if: ${{ github.ref_name == 'main' && steps.npm-publish.outputs.version != '' }}
         run: |
           yontrack build set-property release ${{ steps.npm-publish.outputs.version }}
