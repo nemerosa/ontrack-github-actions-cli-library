@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/nemerosa/ontrack-github-actions-cli-library/compare/v1.0.1...v1.0.2) (2025-12-19)
+
+
+### Bug Fixes
+
+* passing project name ([241fd14](https://github.com/nemerosa/ontrack-github-actions-cli-library/commit/241fd142196f6a17adfc1eca8562630dd60b96d5))
+
 ## [1.0.1](https://github.com/nemerosa/ontrack-github-actions-cli-library/compare/v1.0.0...v1.0.1) (2025-12-19)
 
 
