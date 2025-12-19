@@ -4,6 +4,16 @@ inputs:
   project:
     description: "Name of the project in Yontrack where the build must be found"
     required: true
+  yontrack-url:
+    description: "URL of the Yontrack instance"
+    required: true
+  yontrack-token:
+    description: "Token to access the Yontrack instance"
+    required: true
+  github-token:
+    description: "Token to access GitHub, used only when not specifying the version of the CLI to use"
+    required: false
+    default: ''
   version:
     description: "Version of the Ontrack CLI to setup (defaults to the latest)"
     required: false
@@ -15,10 +25,10 @@ runs:
       id: yontrack-cli-install
       uses: nemerosa/ontrack-github-actions-cli-install@v1.1.0
       env:
-        YONTRACK_URL: ${{ vars.YONTRACK_URL }}
-        YONTRACK_TOKEN: ${{ secrets.YONTRACK_TOKEN }}
+        YONTRACK_URL: ${{ inputs.yontrack-url }}
+        YONTRACK_TOKEN: ${{ inputs.yontrack-token }}
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ inputs.github-token }}
         version: ${{ inputs.version }}
 
     - name: Yontrack build setup
